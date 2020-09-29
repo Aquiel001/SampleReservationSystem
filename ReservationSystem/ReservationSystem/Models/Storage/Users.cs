@@ -34,6 +34,20 @@ namespace ReservationSystem.Models.Storage
             return cmd.LastInsertedId;
         }
 
+        public void DeleteUser(string contactName)
+        {
+            _context.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = _context;
+            //cmd.CommandText = "CALL mark_as_favorite(?id,?isFav)";
+            //UPDATE   `reservations`  SET  `reservations`.`IsFavorite` = isFav WHERE  `reservations`.`Id` = reservationId;
+            cmd.CommandText = "START TRANSACTION; DELETE FROM  `users` WHERE  `users`.`ContactName` = ?cad ; COMMIT;";
+            cmd.Parameters.Add("?cad", MySqlDbType.VarChar).Value = contactName;
+            var inte = cmd.ExecuteNonQuery();
+            _context.Close();
+            //cmd.Parameters.Add("?id", MySqlDbType.Int32).Value = 4;
+        }
+
         public List<User> GetSimpleUsers(string  username)
         {
             _context.Open();

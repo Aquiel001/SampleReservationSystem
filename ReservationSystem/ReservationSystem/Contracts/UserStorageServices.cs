@@ -23,10 +23,16 @@ namespace ReservationSystem.Contracts
         List<User> GetSimpleUsers(string UserName);
 
         /// <summary>
-        /// 
+        /// Confirm if one user exist or not
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
         bool UserExist(string cad, bool exist = false);
+        /// <summary>
+        /// Delete an user
+        /// </summary>
+        /// <param name="contactName"></param>
+        /// <returns></returns>
+        void DeleteUser(string contactName);
     }
 }

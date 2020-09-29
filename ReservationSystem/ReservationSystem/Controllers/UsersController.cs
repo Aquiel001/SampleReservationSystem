@@ -44,10 +44,10 @@ namespace ReservationSystem.Controllers
         public ActionResult<Paging<FullInfoDTO>> GetUserByName(string userName)
         {
             try
-           {
+            {
                 if (_userStorage.UserExist(userName))
                 {
-                   return Ok(_userStorage.GetSimpleUsers(userName).FirstOrDefault());
+                    return Ok(_userStorage.GetSimpleUsers(userName).FirstOrDefault());
                 }
                 return NotFound("User not Found");
 
@@ -56,7 +56,36 @@ namespace ReservationSystem.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            
+
+        }
+        /// <summary>
+        /// Delete an user
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        /// <response code="200"><seealso cref="Paging{FullInfoDTO"/>}Ok</response>
+        /// <response code="404">Not found any user</response>
+        /// <response code="400">Unexpected error</response>
+        [Route("{userName}")]
+        [HttpDelete]
+        public IActionResult DeleteUserByName(string userName)
+        {
+
+            if (_userStorage.UserExist(userName))
+            {
+                try
+                {
+                    _userStorage.DeleteUser(userName);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+                return Ok();
+            }
+            return NotFound("User not Found");
+
+
         }
     }
 }

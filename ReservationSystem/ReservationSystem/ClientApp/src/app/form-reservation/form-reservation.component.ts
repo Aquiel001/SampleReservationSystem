@@ -108,7 +108,29 @@ export class FormReservationComponent implements OnInit {
     this.htmlContent = this.form.value.signature;
     // this.reservation.details = this.form.value.signature;
   }
-
+  functionDelete(userName: string): void{
+    if (!userName){
+      this.Toast.fire({
+        icon: 'error',
+        html: '<p> User contact can\'t be null</p>'
+      });
+    }
+    else {
+      this.http.delete(this.urlbase + 'users/' + userName).subscribe((result: Page) => {
+        console.log(result);
+        this.Toast.fire({
+          icon: 'success',
+          html: '<p> User has been deleted</p>'
+        });
+      }, error => error.status === 404 ? this.Toast.fire({
+        icon: 'error',
+        html: '<p> User Not Found</p>'
+      }) : this.Toast.fire({
+        icon: 'error',
+        html: '<p> Something went wrong</p>'
+      }));
+    }
+  }
   functionSubmit(reservation?: Reservations): void
   {
     if (this.localPhoneNumber) {
