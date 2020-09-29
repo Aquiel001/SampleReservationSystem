@@ -1,0 +1,52 @@
+<app-nav-menu [header]="header" ></app-nav-menu>
+
+
+<div class="container back-white">
+  <form #userForm="ngForm"   method="post">
+    <div class="d-flex flex-column flex-lg-row mt-3">
+
+      <div class="col-lg-3 col-md-12 mt-1 mb-1">
+        <input class="form-control form-group" show-validation type="text"  placeholder="Contact Name ..." (keyup)="keypress($event)" value={{reservation.contactName}}
+               name="userName" [(ngModel)]="reservation.contactName" required="required" title="This Fild is mandatory"/>
+      </div>
+
+      <div class="col-lg-3 col-md-12 mt-1 mb-1">
+        <select class="form-control type-user" [(ngModel)]="selectItems" required (change)="typeChanged($event)"  >
+          <option >Select a user type</option>
+          <option *ngFor="let item of types">{{item.description}}</option>
+        </select>
+      </div>
+
+      <div class="col-lg-3 col-md-12 mt-1 mb-1">
+        <input class="form-control phone " type="text" mask="(000)-000-00-00"
+               placeholder="Phone      -     -    -    " name="phone" value={{reservation.phoneNumber}} [(ngModel)]="localPhoneNumber"/>
+      </div>
+
+      <!-- add the following snippet inside your template -->
+      <div class="input-box-container col-lg-3 col-md-12 mt-1 mb-1">
+        <input class="input-box form-control" placeholder="Click to select a date"
+               angular-mydatepicker name="mydate" (click)="dp.toggleCalendar()"
+               [(ngModel)]="model" [options]="myDpOptions" value="{{reservation.birthDate}}"
+               #dp="angular-mydatepicker" (dateChanged)="onDateChanged($event)"/>
+      </div>
+    </div>
+    <div class="mt-2 mt-lg-auto">
+        <form [formGroup]="form">
+          <angular-editor autofocus="true" id="editor2" formControlName="signature" [config]="editorConfig" (ngModelChange)="onChange2($event)" [ngModel]="reservation.details"></angular-editor>
+        </form>
+    </div>
+    <div class="d-flex-row">
+    <div class=" d-flex justify-content-end">
+      <button class="btn btn-danger text-uppercase mt-11 col-lg-2 col-md-12" style="margin-top: 15px; margin-bottom: 15px" (click)="functionSubmit(reservation)" [routerLink]=" ['./'] " i18n="Enviar">Delete</button>
+    </div>
+    <div class=" d-flex justify-content-end">
+      <button class="btn btn-danger text-uppercase mt-11 col-lg-2 col-md-12" style="margin-top: 15px; margin-bottom: 15px" (click)="functionSubmit(reservation)" [routerLink]=" ['./'] " i18n="Enviar">Send</button>
+    </div>
+    </div>
+  </form>
+
+</div>
+
+
+
+

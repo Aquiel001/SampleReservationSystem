@@ -1,0 +1,76 @@
+<app-nav-menu [header]="header"></app-nav-menu>
+
+<div class="container">
+
+  <div class="mt-table">
+    <select class="form-control col-lg-3 col-md-6 mb-3" [(ngModel)]="selectIndex" (change)="selectionChanged($event)">
+      <option i18n="">By Date Ascending</option>
+      <option i18n="">By Date Descending</option>
+      <option i18n="">By Alphabetic Ascending</option>
+      <option i18n="">By Alphabetic Descending</option>
+      <option i18n="">By Ranking Ascending</option>
+      <option i18n="">By Ranking Descending</option>
+    </select>
+    <table class="table-responsive d-flex justify-content-center align-items-center table-striped">
+      <tbody>
+      <tr *ngFor="let reservation of reservations" class="d-flex pt-1 pb-1">
+        <td>
+          <div class="d-flex">
+            <img class="pic-baner d-none d-lg-block mr-2" src="http://lorempixel.com/output/sports-q-c-60-60-2.jpg"
+                 alt="">
+            <div class="d-flex flex-column">
+              <span> {{ reservation.contactName }}</span>
+              <span> {{ reservation.birthDate | date }}</span>
+            </div>
+          </div>
+        </td>
+        <td class="reservation">
+          <div class="d-flex flex-column">
+            <span>Ranking</span>
+            <ngb-rating [max]="ratingCount" [(rate)]=reservation.ranking (click)="updateRating(reservation.ranking , reservation.id)"
+                        [readonly]="false" [(ngModel)]="reservation.ranking"></ngb-rating>
+          </div>
+        </td>
+        <td class="reservation">
+          <div class="d-flex">
+            <span class="d-none d-lg-block mr-2">Add Favorites</span>
+            <img class="fav-icon" (click)="addFav(reservation.isFavorite,reservation.id)" [ngClass]="{'red-color':reservation.isFavorite===true}"
+                 [src]="reservation.isFavorite ? this.iconRed : this.iconBlack" alt="">
+          </div>
+        </td>
+
+        <td>
+          <button class="btn btn-color" (click)="edit(reservation.id)" i18n="">Edit</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item" (click)="getRecords(currentPage-1)"><a class="page-link"><i class="oi oi-caret-left"></i></a></li>
+          <li *ngFor="let page of pages; let i = index" class="page-item">
+            <div *ngIf="pages.length>4">
+              <a *ngIf="i<3 || i>pages.length-3" [ngClass]="{'current-page': i === currentPage-1}" class="page-link"
+                 (click)="getRecords(i+1)">
+                {{i+1}}
+              </a>
+              <span *ngIf="i===3">...</span>
+
+            </div>
+            <div *ngIf="pages.length<=4">
+              <a class="page-link" (click)="getRecords(i+1)">
+                {{i+1}}
+              </a>
+            </div>
+
+          </li>
+          <li class="page-item" (click)="getRecords(currentPage+1)"><a class="page-link"><i class="oi oi-caret-right"></i></a></li>
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+

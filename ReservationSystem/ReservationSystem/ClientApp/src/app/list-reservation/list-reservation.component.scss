@@ -1,0 +1,135 @@
+
+.pic-baner {
+  width: 45px;
+  height: 45px;
+}
+
+ngb-rating {
+  color: #eae11f;
+  background: transparent;
+}
+
+.red-color {
+  fill: red !important;
+}
+
+svg {
+  fill: #000000;
+}
+
+.fav-icon {
+  width: 30px;
+  height: 30px;
+}
+
+td.reservation {
+  padding: 0 15px;
+}
+
+tr {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mt-table {
+  background-color: #FFFFFF;
+  padding: 10px 30px;
+}
+
+tbody {
+  width: 100%;
+}
+
+.btn-color {
+  background: #696962;
+  color: white;
+}
+
+.pagination {
+  display: flex;
+  margin-top: 15%;
+}
+
+.page-link {
+  border: 1px solid #696962;
+  color: #696962;
+  border-radius: 5px;
+  margin: 0 3px;
+
+  &.current-page {
+    color: #FFFFFF !important;
+    background-color: #696962;
+  }
+}
+
+@media (max-width: 576px) {
+  tbody {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: left;
+    margin-block-end: 17px;
+    margin-top: 30%;
+  }
+}
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.btn-color {
+  background: #696962;
+  color: white;
+}
+
+.title {
+  color: #b41715;
+  font-size: 30px;
+}
+
+.text-up{
+  top: 10px;
+  left: 10px;
+  color: #FFFFFF;
+  font-size: 183%;
+  text-align: left;
+  //position: absolute;
+}
+.text-up-rigth{
+  top: 20px;
+  color: #FFFFFF;
+  font-size: 100%;
+  position: center;
+  justify-content: flex-end;
+  text-align: end;
+  position: absolute;
+  padding-right: 30px;
+
+}
+
+header-container{
+  position: absolute;
+}
+
+
+
+

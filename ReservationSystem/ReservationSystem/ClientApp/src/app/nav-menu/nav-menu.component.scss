@@ -1,0 +1,64 @@
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.btn-color {
+  background: #696962;
+  color: white;
+}
+
+.title {
+  color: #b41715;
+  font-size: 27px;
+}
+
+.text-up{
+  top: 10px;
+  left: 10px;
+  color: #FFFFFF;
+  font-size: 183%;
+  text-align: left;
+  //position: absolute;
+}
+.text-up-rigth{
+  top: 20px;
+  color: #FFFFFF;
+  font-size: 100%;
+  position: center;
+  justify-content: flex-end;
+  text-align: end;
+  position: absolute;
+  padding-right: 30px;
+
+}
+
+.text-up-center{
+  top: 5px!important;
+  left: 10px;
+  color: #FFFFFF;
+  font-size: 183%;
+  text-align: left;
+  //position: absolute;
+}
+
+header-container{
+  position: absolute;
+}
+
+

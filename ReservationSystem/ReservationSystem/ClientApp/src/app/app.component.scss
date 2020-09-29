@@ -1,0 +1,44 @@
+.text-up{
+  top: 10px;
+  left: 10px;
+  color: #FFFFFF;
+  font-size: 183%;
+  text-align: left;
+  //position: absolute;
+}
+.text-up-rigth{
+  top: 20px;
+  color: #FFFFFF;
+  font-size: 100%;
+  position: center;
+  justify-content: flex-end;
+  text-align: end;
+  position: absolute;
+  padding-right: 30px;
+
+}
+.text-up-center{
+  top: -20px;
+  left: 45%;
+  color: #FFFFFF;
+  font-size: 100%;
+  text-align: left;
+  //position: absolute;
+  /*.text-up-center{*/
+  /*font-size: 8px;*/
+  /*left: 190px!important;*/
+  /*padding-left: 25%;*/
+  /*width: 306px;*/
+  /*}*/
+}
+
+header-container{
+  position: absolute;
+}
+
+.none-link{
+  text-decoration: none !important;
+  color: white;
+}
+
+
