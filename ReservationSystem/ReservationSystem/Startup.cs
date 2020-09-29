@@ -5,6 +5,10 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MySql.Data.MySqlClient;
+using ReservationSystem.Contracts;
+using ReservationSystem.Models.Services;
+using ReservationSystem.Models.Storage;
 
 namespace ReservationSystem
 {
@@ -26,6 +30,15 @@ namespace ReservationSystem
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            //services section
+            services.AddTransient<MySqlConnections>();
+            services.AddTransient<MySqlConnection>(c=>new MySqlConnections(this.Configuration).Start());
+            //storage services
+            services.AddTransient<IUserStorageServices, UserStorageService>();
+            services.AddTransient<IReservationStorageService,ReservationsStorageService>();
+            services.AddTransient<IFullInfoStorageServices, FullInfoStorageService>();
+            services.AddTransient<IUserTypesStorageService, UserTypesStorageService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
